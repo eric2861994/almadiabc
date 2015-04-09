@@ -4,6 +4,17 @@
 <h1>Daftar Produk</h1>
 
 <p>Berikut ini adalah produk yang terdaftar di sistem.</p>
+
+<h3>Mencari Produk</h3>
+<form>
+<div class="form-group">
+<label for="query">Nama Produk</label>
+<input type="text" class="form-control" id="query" />
+</div>
+<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Cari</button>
+</form>
+
+<h3>Tabel Produk</h3>
 <a href="tambah"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
 
 <table class="table table-hover">
