@@ -14,5 +14,13 @@ class DummyController extends Controller {
 	public function showPatient() {
 		return view('patient.show');
 	}
+	
+	public function indexTransactionSell() {
+		return view('transaction.sell');
+	}
+	
+	public function indexTransactionPurchase() {
+		return view('transaction.purchase');
+	}
 
 }
