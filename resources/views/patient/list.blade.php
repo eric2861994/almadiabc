@@ -11,7 +11,7 @@
 <label for="query">Nama Pasien</label>
 <input type="text" class="form-control" id="query" />
 </div>
-<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Cari</button>
 </form>
 
 <h3>Tabel Pasien</h3>
