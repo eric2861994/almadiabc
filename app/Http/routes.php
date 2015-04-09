@@ -13,7 +13,9 @@
 
 Route::resource('dummy', 'DummyController');
 
-Route::get('admin/perawatan', 'TreatmentController@index');
+Route::get('perawatan', 'TreatmentController@index');
+Route::get('pasien', 'DummyController@indexPatient');
+Route::get('pasien/konsultasi', 'DummyController@showPatient');
 
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
