@@ -15,6 +15,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="{{ url('pasien') }}">Pasien</a></li>
+				<li><a href="{{ url('konsultasi') }}">Konsultasi</a></li>
 				<li><a href="{{ url('perawatan') }}">Perawatan</a></li>
 				<li><a href="{{ url('penjualan') }}">Penjualan</a></li>
 				<li><a href="{{ url('pembelian') }}">Pembelian</a></li>

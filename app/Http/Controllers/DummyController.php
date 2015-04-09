@@ -26,5 +26,9 @@ class DummyController extends Controller {
 	public function indexProduct() {
 		return view('product.list');
 	}
+	
+	public function indexConsultation() {
+		return view('consultation.list');
+	}
 
 }
