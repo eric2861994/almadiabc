@@ -19,42 +19,20 @@
 	</tr>
 </thead>
 <tbody>
+	@foreach ($patients as $patientNo => $patient)
 	<tr>
-	<td>1</td>
-	<td>Susanti</td>
-	<td>Perempuan</td>
-	<td>7 Februari 1994</td>
-	<td>2 April 2015</td>
-	<td>081234567890</td>
+	<td>{{ $patientNo+1 }}</td>
+	<td>{{ $patient->nama }}</td>
+	<td>{{ $patient->j_kelamin }}</td>
+	<td>{{ $patient->tanggal_lahir }}</td>
+	<td>{{ $patient->tgl_masuk }}</td>
+	<td>{{ $patient->no_telepon }}</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
 	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
-	<tr>
-	<td>2</td>
-	<td>Stephen</td>
-	<td>Laki-laki</td>
-	<td>9 April 1994</td>
-	<td>3 April 2015</td>
-	<td>081234567891</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
-	<tr>
-	<td>3</td>
-	<td>Eric</td>
-	<td>Laki-laki</td>
-	<td>28 Juni 1994</td>
-	<td>4 April 2015</td>
-	<td>081234567892</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
+	@endforeach
 </tbody>
 </table>
 @endsection
