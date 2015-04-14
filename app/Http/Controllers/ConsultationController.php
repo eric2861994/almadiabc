@@ -17,10 +17,15 @@ class ConsultationController extends Controller {
 
 	public function index()
 	{
-		
-		$consultations = $this->consultation->get();
-		
-		return view('consultation.list', compact('consultations'));
+		$consultations=$this->consultation
+	           				->leftjoin('pasien', 'konsultasi.ID_pasien', '=', 'pasien.ID')
+	            			->get();
+		$totalprice=0;
+		foreach($consultations as $consultation)
+		{
+			$totalprice+=$consultation->harga;
+		}
+		return view('consultation.list', compact('consultations'), compact('totalprice'));
 	}
 
 	/**

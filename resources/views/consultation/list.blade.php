@@ -37,19 +37,20 @@
 	@foreach ($consultations as $consultationNo => $consultation)
 	<tr>
 	<td>{{ $consultationNo+1 }}</td>
-	<td>{{ $consultation->ID_pasien }}</td>
+	<td>{{ $consultation->nama }}</td>
 	<td>{{ $consultation->tanggal }}</td>
 	<td>{{ $consultation->dokter }}</td>
 	<td>{{ $consultation->masalah }}</td>
 	<td>{{ $consultation->hasil_konsultasi }}</td>
 	<td>{{ $consultation->resep }}</td>
-	<td>{{ $consultation->harga }}</td>
+	<td>Rp. {{ $consultation->harga }}</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
 	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
 	@endforeach
+	<tr><td></td><td></td><td></td><td></td><td></td><td></td><th>Total Transaksi</th><td>Rp {{$totalprice}}</td><td></td></tr>
 </tbody>
 </table>
 @endsection
