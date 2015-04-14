@@ -19,7 +19,7 @@ Route::get('pasien/konsultasi', 'DummyController@showPatient');
 Route::get('penjualan', 'DummyController@indexTransactionSell');
 Route::get('pembelian', 'DummyController@indexTransactionPurchase');
 Route::get('produk', 'ProductController@index');
-Route::get('konsultasi', 'DummyController@indexConsultation');
+Route::get('konsultasi', 'ConsultationController@index');
 
 
 Route::get('/', 'WelcomeController@index');

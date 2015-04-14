@@ -14,51 +14,29 @@
 	<th>Tanggal</th>
 	<th>Dokter</th>
 	<th>Masalah</th>
+	<th>Hasil Konsultasi</th>
 	<th>Resep</th>
 	<th>Harga</th>
 	<th>Operasi</th>
 	</tr>
 </thead>
 <tbody>
+	@foreach ($consultations as $consultationNo => $consultation)
 	<tr>
-	<td>1</td>
-	<td>Susanti</td>
-	<td>2 April 2015</td>
-	<td>Paul Diesel</td>
-	<td>Jerawat</td>
-	<td>Obat anti-jerawat krim</td>
-	<td>Rp 50.000,00</td>
+	<td>{{ $consultationNo+1 }}</td>
+	<td>{{ $consultation->ID_pasien }}</td>
+	<td>{{ $consultation->tanggal }}</td>
+	<td>{{ $consultation->dokter }}</td>
+	<td>{{ $consultation->masalah }}</td>
+	<td>{{ $consultation->hasil_konsultasi }}</td>
+	<td>{{ $consultation->resep }}</td>
+	<td>{{ $consultation->harga }}</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
 	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
-	<tr>
-	<td>2</td>
-	<td>Susanti</td>
-	<td>3 April 2015</td>
-	<td>Paul Diesel Jr.</td>
-	<td>Kulit Kering</td>
-	<td>Pelembab muka</td>
-	<td>Rp 40.000,00</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
-	<tr>
-	<td>3</td>
-	<td>Stephen</td>
-	<td>5 April 2015</td>
-	<td>Amy Walker</td>
-	<td>Kulit sensitif</td>
-	<td>Obat anti sensitif</td>
-	<td>Rp 70.000,00</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
+	@endforeach
 </tbody>
 </table>
 @endsection
