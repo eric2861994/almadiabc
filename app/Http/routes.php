@@ -14,6 +14,7 @@
 Route::resource('dummy', 'DummyController');
 
 Route::get('perawatan', 'TreatmentController@index');
+Route::get('tr_perawatan', 'DummyController@indexTransactionTreatment');
 Route::get('pasien', 'PatientController@index');
 Route::get('pasien/konsultasi', 'DummyController@showPatient');
 Route::get('penjualan', 'DummyController@indexTransactionSell');
@@ -24,6 +25,10 @@ Route::get('konsultasi', 'ConsultationController@index');
 
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
+Route::get('login', function()
+	{
+		return View::make('auth.login');
+	});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

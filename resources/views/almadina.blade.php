@@ -17,9 +17,10 @@
 				<li><a href="{{ url('pasien') }}">Pasien</a></li>
 				<li><a href="{{ url('konsultasi') }}">Konsultasi</a></li>
 				<li><a href="{{ url('perawatan') }}">Perawatan</a></li>
+				<li><a href="{{ url('tr_perawatan') }}">Tr Perawatan</a></li>
+				<li><a href="{{ url('produk') }}">Produk</a></li>
 				<li><a href="{{ url('penjualan') }}">Penjualan</a></li>
 				<li><a href="{{ url('pembelian') }}">Pembelian</a></li>
-				<li><a href="{{ url('produk') }}">Produk</a></li>
 			<ul>
 			</div>
 		</div>
