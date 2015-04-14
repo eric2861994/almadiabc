@@ -29,52 +29,36 @@
 <thead>
 	<tr>
 	<th>Nomor Penjualan</th>
-	<th>Nomor Barang</th>
+	<th>Nama Barang</th>
 	<th>Jumlah Barang</th>
-	<th>Nomor Pasien Pembeli</th>
+	<th>Nama Pasien Pembeli</th>
 	<th>Tanggal</th>
 	<th>Total</th>
 	<th>Operasi</th>
 	</tr>
 </thead>
 <tbody>
+	@foreach($transsells as $trans)
 	<tr>
-	<td>1</td>
-	<td>1</td>
-	<td>2</td>
-	<td>1</td>
-	<td>2 April 2015</td>
-	<td>Rp 100.000,00</td>
+	<td>{{ $trans->ID }}</td>
+	<td>{{ $trans->nama_produk }}</td>
+	<td>{{ $trans->jumlah }}</td>
+	<td>
+		@if($trans->ID_pasien != "")
+			{{ $trans->nama_pasien }}
+		@else
+			-
+		@endif
+	</td>
+	<td>{{ $trans->tanggal }}</td>
+	<td>{{ $trans->harga_jual * $trans->jumlah }}</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
 	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
-	<tr>
-	<td>2</td>
-	<td>2</td>
-	<td>2</td>
-	<td>1</td>
-	<td>3 April 2015</td>
-	<td>Rp 80.000,00</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
-	<tr>
-	<td>3</td>
-	<td>1</td>
-	<td>1</td>
-	<td>2</td>
-	<td>7 April 2015</td>
-	<td>Rp 50.000,00</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
-	<tr><td></td><td></td><td></td><td></td><th>Total Penjualan</th><td>Rp 230.000,00</td><td></td></tr>
+	@endforeach
+	<tr><td></td><td></td><td></td><td></td><th>Total Penjualan</th><td>{{ $totalharga }}</td><td></td></tr>
 </tbody>
 </table>
 @endsection
