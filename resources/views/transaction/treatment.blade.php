@@ -29,18 +29,20 @@
 <thead>
 	<tr>
 	<th>Nomor Transaksi</th>
-	<th>ID Pasien</th>
-	<th>ID Perawatan</th>
+	<th>Nama Pasien</th>
+	<th>Nama Perawatan</th>
 	<th>Tanggal</th>
+	<th>Harga</th>
 	<th>Operasi</th>
 	</tr>
 </thead>
 <tbody>
 	<tr>
 	<td>1</td>
-	<td>1</td>
-	<td>2</td>
-	<td>boss</td>
+	<td>Susanti</td>
+	<td>Message</td>
+	<td>1 April 2015</td>
+	<td>Rp 11.000,00</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
 	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
