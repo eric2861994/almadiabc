@@ -17,8 +17,8 @@ Route::get('perawatan', 'TreatmentController@index');
 Route::get('tr_perawatan', 'DummyController@indexTransactionTreatment');
 Route::get('pasien', 'PatientController@index');
 Route::get('pasien/konsultasi', 'DummyController@showPatient');
-Route::get('penjualan', 'DummyController@indexTransactionSell');
-Route::get('pembelian', 'DummyController@indexTransactionPurchase');
+Route::get('penjualan', 'TransSellController@index');
+Route::get('pembelian', 'TransPurchaseController@index');
 Route::get('produk', 'ProductController@index');
 Route::get('konsultasi', 'ConsultationController@index');
 

@@ -38,43 +38,21 @@
 	</tr>
 </thead>
 <tbody>
+	@foreach($transpurchases as $trans)
 	<tr>
-	<td>1</td>
-	<td>1</td>
-	<td>2</td>
-	<td>boss</td>
-	<td>1 April 2015</td>
-	<td>Rp 80.000,00</td>
+	<td>{{ $trans->ID }}</td>
+	<td>{{ $trans->nama }}</td>
+	<td>{{ $trans->jumlah }}</td>
+	<td>{{ $trans->username }}</td>
+	<td>{{ $trans->tanggal }}</td>
+	<td>{{ $trans->harga_beli * $trans->jumlah }}</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
 	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
-	<tr>
-	<td>2</td>
-	<td>2</td>
-	<td>2</td>
-	<td>boss</td>
-	<td>2 April 2015</td>
-	<td>Rp 70.000,00</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
-	<tr>
-	<td>3</td>
-	<td>1</td>
-	<td>1</td>
-	<td>ssob</td>
-	<td>6 April 2015</td>
-	<td>Rp 40.000,00</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
-	<tr><td></td><td></td><td></td><td></td><th>Total Pembelian</th><td>Rp 190.000,00</td><td></td></tr>
+	@endforeach
+	<tr><td></td><td></td><td></td><td></td><th>Total Pembelian</th><td>{{ $totalharga }}</td><td></td></tr>
 </tbody>
 </table>
 @endsection
