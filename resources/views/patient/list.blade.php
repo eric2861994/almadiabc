@@ -4,6 +4,17 @@
 <h1>Daftar Pasien</h1>
 
 <p>Berikut ini adalah daftar pasien yang terdaftar di sistem.</p>
+
+<h3>Mencari Pasien</h3>
+<form>
+<div class="form-group">
+<label for="query">Nama Pasien</label>
+<input type="text" class="form-control" id="query" />
+</div>
+<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Cari</button>
+</form>
+
+<h3>Tabel Pasien</h3>
 <a href="tambah"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
 
 <table class="table table-hover">
