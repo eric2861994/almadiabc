@@ -23,45 +23,27 @@
 	<th>Nomor</th>
 	<th>Nama</th>
 	<th>Stok</th>
-	<th>Harga</th>
+	<th>Harga Jual</th>
+	<th>Harga Beli</th>
 	<th>Deskripsi</th>
 	<th>Operasi</th>
 	</tr>
 </thead>
 <tbody>
+	@foreach ($products as $productNo => $product)
 	<tr>
-	<td>1</td>
-	<td>ABC Anti Acne</td>
-	<td>10</td>
-	<td>Rp 50.000,00</td>
-	<td>Penghilang Jerawat</td>
+	<td>{{ $productNo+1 }}</td>
+	<td>{{ $product->nama }}</td>
+	<td>{{ $product->stok }}</td>
+	<td>{{ $product->harga_jual }}</td>
+	<td>{{ $product->harga_beli }}</td>
+	<td>{{ $product->deskripsi }}</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
 	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
-	<tr>
-	<td>2</td>
-	<td>ABC Skin Care</td>
-	<td>11</td>
-	<td>Rp 40.000,00</td>
-	<td>Pelembab kulit muka</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
-	<tr>
-	<td>3</td>
-	<td>ABC Boon</td>
-	<td>12</td>
-	<td>Rp 12.345,00</td>
-	<td>Dummy Product</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
-</tbody>
+	@endforeach
+	</tbody>
 </table>
 @endsection
