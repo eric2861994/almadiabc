@@ -22,10 +22,10 @@ class CreatePatientRequest extends Request {
 	public function rules()
 	{
 		return [
-			'nama' => 'required|max:30',
-			'j_kelamin' => 'required',
-			'tanggal_lahir' => 'required|date_format:d-m-Y',
-			'no_telepon' => 'required|max:20'
+			'name' => 'required|max:255',
+			'sex' => 'required',
+			'birthday' => 'required|date_format:d-m-Y',
+			'phone' => 'required|max:20'
 		];
 	}
 

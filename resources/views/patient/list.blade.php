@@ -15,7 +15,7 @@
 </form>
 
 <h3>Tabel Pasien</h3>
-<a href="pasien/tambah"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
+<a href="{{ route('patient.create') }}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
 
 <table class="table table-hover">
 <thead>
@@ -33,14 +33,15 @@
 	@foreach ($patients as $patientNo => $patient)
 	<tr>
 	<td>{{ $patientNo+1 }}</td>
-	<td>{{ $patient->nama }}</td>
-	<td>{{ $patient->j_kelamin }}</td>
-	<td>{{ $patient->tanggal_lahir }}</td>
-	<td>{{ $patient->tgl_masuk }}</td>
-	<td>{{ $patient->no_telepon }}</td>
+	<td>{{ $patient->name }}</td>
+	<td>{{ $patient->sex }}</td>
+	<td>{{ $patient->birthday }}</td>
+	<td>{{ $patient->created_at }}</td>
+	<td>{{ $patient->phone }}</td>
 	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
+	<a href="{{ route('patient.show', $patient->id) }}"><button class="btn btn-info"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Lihat</button></a>
+	<a href="{{ route('patient.edit', $patient->id) }}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Ubah</button></a>
+	<a href="{{ route('patient.get_destroy', $patient->id) }}"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
 	@endforeach

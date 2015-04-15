@@ -15,7 +15,7 @@
 </form>
 
 <h3>Tabel Produk</h3>
-<a href="tambah"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
+<a href="{{ route('product.create') }}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
 
 <table class="table table-hover">
 <thead>
@@ -33,11 +33,11 @@
 	@foreach ($products as $productNo => $product)
 	<tr>
 	<td>{{ $productNo+1 }}</td>
-	<td>{{ $product->nama }}</td>
-	<td>{{ $product->stok }}</td>
-	<td>{{ $product->harga_jual }}</td>
-	<td>{{ $product->harga_beli }}</td>
-	<td>{{ $product->deskripsi }}</td>
+	<td>{{ $product->name }}</td>
+	<td>{{ $product->stock }}</td>
+	<td>{{ $product->sell_price }}</td>
+	<td>{{ $product->buy_price }}</td>
+	<td>{{ $product->description }}</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
 	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>

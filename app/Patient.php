@@ -3,11 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model {
-
-	protected $table = 'pasien';
 	
-	public $timestamps = false;
+	protected $fillable = ['name', 'sex', 'birthday', 'phone'];
 	
-	protected $fillable = ['nama', 'j_kelamin', 'tanggal_lahir', 'no_telepon'];
-
 }

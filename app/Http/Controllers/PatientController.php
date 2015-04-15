@@ -38,11 +38,11 @@ class PatientController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(CreatePatientRequest $request, Patient $patient)
+	public function store(CreatePatientRequest $request)
 	{
-		$patient->create($request->all());
+		$this->patient->create($request->all());
 		
-		return redirect(url('pasien'));
+		return redirect()->route('patient.index');
 	}
 
 	/**
@@ -51,9 +51,9 @@ class PatientController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Patient $patient)
 	{
-		//
+		return view('patient.show', compact('patient'));
 	}
 
 	/**
@@ -62,9 +62,9 @@ class PatientController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Patient $patient)
 	{
-		//
+		return view('patient.edit', compact('patient'));
 	}
 
 	/**
@@ -73,9 +73,11 @@ class PatientController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Patient $patient, CreatePatientRequest $request)
 	{
-		//
+		$patient->fill($request->all())->save();
+		
+		return redirect()->route('patient.index');
 	}
 
 	/**
@@ -84,9 +86,11 @@ class PatientController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Patient $patient)
 	{
-		//
+		$patient->delete();
+		
+		return redirect()->route('patient.index');
 	}
 
 }

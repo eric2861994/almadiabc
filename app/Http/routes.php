@@ -11,21 +11,30 @@
 |
 */
 
+Route::model('pasien', 'App\Patient');
+
 Route::resource('dummy', 'DummyController');
 
 Route::get('perawatan', 'TreatmentController@index');
 Route::get('tr_perawatan', 'DummyController@indexTransactionTreatment');
 
 // patient
-Route::get('pasien', 'PatientController@index');
-Route::get('pasien/tambah', 'PatientController@create');
-Route::post('pasien', 'PatientController@store');
+Route::get('pasien/tambah', ['as' => 'patient.create', 'uses' => 'PatientController@create']);
+Route::post('pasien', ['as' => 'patient.store', 'uses' => 'PatientController@store']);
+Route::get('pasien', ['as' => 'patient.index', 'uses' => 'PatientController@index']);
+Route::get('pasien/{pasien}', ['as' => 'patient.show', 'uses' => 'PatientController@show']);
+Route::get('pasien/{pasien}/ubah', ['as' => 'patient.edit', 'uses' => 'PatientController@edit']);
+Route::put('pasien/{pasien}', ['as' => 'patient.update', 'uses' => 'PatientController@update']);
+Route::get('pasien/{pasien}/hapus', ['as' => 'patient.get_destroy', 'uses' => 'PatientController@destroy']);
 
 
-Route::get('pasien/konsultasi', 'DummyController@showPatient');
+// product
+Route::get('produk', ['as' => 'product.index', 'uses' => 'ProductController@index']);
+Route::get('produk/tambah', ['as' => 'product.create', 'uses' => 'ProductController@create']);
+Route::post('produk', ['as' => 'product.store', 'uses' => 'ProductController@store']);
+
 Route::get('penjualan', 'TransSellController@index');
 Route::get('pembelian', 'TransPurchaseController@index');
-Route::get('produk', 'ProductController@index');
 Route::get('konsultasi', 'ConsultationController@index');
 
 

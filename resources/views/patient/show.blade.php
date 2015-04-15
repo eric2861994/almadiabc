@@ -6,17 +6,17 @@
 <p>Berikut ini adalah data pasien yang anda pilih</p>
 <table>
 <tr><td><b>Nomor</b></td>
-<td>: 1</td></tr>
+<td>: {{ $patient->id }}</td></tr>
 <tr><td><b>Nama Pasien</b></td>
-<td>: Susanti</td></tr>
+<td>: {{ $patient->name }}</td></tr>
 <tr><td><b>Jenis Kelamin</b></td>
-<td>: Perempuan</td></tr>
+<td>: {{ $patient->sex == 'L' ? 'Laki-laki' : 'Perempuan' }}</td></tr>
 <tr><td><b>Tanggal Lahir</b></td>
-<td>: 7 Februari 1994</td></tr>
+<td>: {{ $patient->birthday}} </td></tr>
 <tr><td><b>Tanggal Masuk</b></td>
-<td>: 2 April 2015</td></tr>
+<td>: {{ $patient->created_at}}</td></tr>
 <tr><td><b>Nomor Telepon</b></td>
-<td>: 081234567890</td></tr>
+<td>: {{ $patient->phone }}</td></tr>
 </table>
 
 <p>
