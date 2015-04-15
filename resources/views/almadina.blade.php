@@ -21,7 +21,7 @@
 				<li><a href="{{ url('konsultasi') }}">Tr Konsultasi</a></li>
 				<li><a href="{{ url('tr_perawatan') }}">Tr Perawatan</a></li>
 				<li><a href="{{ url('pembelian') }}">Tr Pembelian</a></li>
-			<ul>
+			</ul>
 			</div>
 		</div>
 	</nav>

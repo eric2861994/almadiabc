@@ -7,10 +7,35 @@
 <a href="tambah"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
 
 <h3>Pemilihan waktu</h3>
+
 <form class="form-inline">
 <div class="form-group">
 <label for="sel1">Tahun</label>
 {!! Form::selectYear('sel1', 2012, 2015, 2015, ['class' => 'form-control']) !!}
+<input list="browsers" name="browser">
+<datalist id="browsers">
+  <option value="Internet Explorer">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist>
+<style>
+  .select-editable { position:relative; background-color:white; border:solid grey 1px;  width:120px; height:18px; }
+  .select-editable select { position:absolute; top:0px; left:0px; font-size:14px; border:none; width:120px; margin:0; }
+  .select-editable input { position:absolute; top:0px; left:0px; width:100px; padding:1px; font-size:12px; border:none; }
+  .select-editable select:focus, .select-editable input:focus { outline:none; }
+</style>
+
+<div class="select-editable">
+  <select onchange="this.nextElementSibling.value=this.value">
+    <option value=""></option>
+    <option value="115x175 mm">115x175 mm</option>
+    <option value="120x160 mm">120x160 mm</option>
+    <option value="120x287 mm">120x287 mm</option>
+  </select>
+  <input type="text" name="format" value=""/>
+</div>
 </div>
 <div class="form-group">
 <label for="sel2">Bulan</label>

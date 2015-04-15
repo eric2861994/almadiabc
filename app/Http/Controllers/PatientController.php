@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Patient;
+use App\Http\Requests\CreatePatientRequest;
 
 class PatientController extends Controller {
 
@@ -29,8 +30,7 @@ class PatientController extends Controller {
 	 */
 	public function create()
 	{
-		//
-		return "Haha";
+		return view('patient.create');
 	}
 
 	/**
@@ -38,9 +38,11 @@ class PatientController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreatePatientRequest $request, Patient $patient)
 	{
-		//
+		$patient->create($request->all());
+		
+		return redirect(url('pasien'));
 	}
 
 	/**

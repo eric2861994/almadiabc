@@ -15,7 +15,7 @@
 </form>
 
 <h3>Tabel Pasien</h3>
-<a href="tambah"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
+<a href="pasien/tambah"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
 
 <table class="table table-hover">
 <thead>

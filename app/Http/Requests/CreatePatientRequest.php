@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateSongRequest extends Request {
+class CreatePatientRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,8 +22,10 @@ class CreateSongRequest extends Request {
 	public function rules()
 	{
 		return [
-			'title' => 'required',
-			'slug' => 'required|unique:songs,slug'
+			'nama' => 'required|max:30',
+			'j_kelamin' => 'required',
+			'tanggal_lahir' => 'required|date_format:d-m-Y',
+			'no_telepon' => 'required|max:20'
 		];
 	}
 
