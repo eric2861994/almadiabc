@@ -20,11 +20,12 @@
 				<li><a href="{{ url('penjualan') }}">Tr Penjualan</a></li>
 				<li><a href="{{ url('konsultasi') }}">Tr Konsultasi</a></li>
 				<li><a href="{{ url('tr_perawatan') }}">Tr Perawatan</a></li>
-				<li><a href="{{ url('pembelian') }}">Tr Pembelian</a></li>
+				<li><a href="{{ url('pembelian-produk') }}">Tr Pembelian</a></li>
 				<?php $user = \Auth::user() ?>
 				@if (!is_null($user))
 					<li><a href="#">{{ $user->username }}</a></li>
 				@endif
+
 			</ul>
 			</div>
 		</div>
