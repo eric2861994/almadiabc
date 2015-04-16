@@ -57,9 +57,9 @@
 	</tr>
 </thead>
 <tbody>
-	@foreach($transsells as $trans)
+	@foreach($transsells as $transNo => $trans)
 	<tr>
-	<td>{{ $trans->id }}</td>
+	<td>{{ $transNO+1 }}</td>
 	<td>{{ $trans->product_name }}</td>
 	<td>{{ $trans->quantity }}</td>
 	<td>

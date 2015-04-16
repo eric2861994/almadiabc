@@ -72,7 +72,7 @@ class TransPurchaseController extends Controller {
 		$r = $request->all();
 		$t = new TransPurchase;
 		$t->fill($r);
-		$t->id_user = 1; //harusnya user yg login
+		$t->id_user = \Auth::id(); //harusnya user yg login
 		$t->date = Carbon::now();
 		$t->save();		
 

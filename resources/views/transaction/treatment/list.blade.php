@@ -31,9 +31,9 @@
 	</tr>
 </thead>
 <tbody>
-	@foreach($transtreatments as $trans)
+	@foreach($transtreatments as $transNo => $trans)
 	<tr>
-	<td>{{ $trans->id }}</td>
+	<td>{{ $transNo+1 }}</td>
 	<td>{{ $trans->patient_name }}</td>
 	<td>{{ $trans->treatment_name }}</td>
 	<td>{{ $trans->date }}</td>
