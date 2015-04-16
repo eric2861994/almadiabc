@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\TransPurchase;
+use App\Http\Requests\CreateTransPurchaseRequest;
 
+use App\Product;
+use Carbon\Carbon;
 class TransPurchaseController extends Controller {
-
+	
 	private $transpurchase;
 
 	public function __construct(TransPurchase $transpurchase) {
@@ -18,14 +21,17 @@ class TransPurchaseController extends Controller {
 	public function index()
 	{
 		$transpurchases = $this->transpurchase
-       					   	   ->join('produk', 'transaksi_pembelian.ID_produk', '=', 'produk.ID')	 
+       					   	   ->join('products', 'trans_purchases.id_product', '=', 'products.id')
+       					   	   ->join('users', 'trans_purchases.id_user', '=', 'users.id')
+       					   	   ->orderby('trans_purchases.id', 'asc')
+       					   	   ->select('trans_purchases.id','products.name as product_name','trans_purchases.quantity','users.name as user_name', 'trans_purchases.date','products.buy_price' )	 
         				       ->get();
 
-		$totalharga = 0;
-		foreach($transpurchases as $trans) {
-			$totalharga = $totalharga + ($trans->harga_beli * $trans->jumlah);
+		$totalprice=0;
+		foreach ($transpurchases as $trans) {
+			$totalprice += ($trans->buy_price * $trans->quantity);
 		}
-		return view('transaction.purchase', compact('transpurchases'), compact('totalharga'));
+		return view('transaction.purchase.list', compact('transpurchases'), compact('totalprice'));
 	}
 
 	/**
@@ -35,7 +41,8 @@ class TransPurchaseController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$products=Product::all()->lists('name','id');
+		return view('transaction.purchase.create', compact('products'));
 	}
 
 	/**
@@ -43,9 +50,16 @@ class TransPurchaseController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateTransPurchaseRequest $request)
 	{
-		//
+		$r = $request->all();
+		$t = new TransPurchase;
+		$t->fill($r);
+		$t->id_user = 1; //harusnya user yg login
+		$t->date = Carbon::now();
+		$t->save();		
+
+		return redirect()->route('transpurchase.index');
 	}
 
 	/**
@@ -54,9 +68,9 @@ class TransPurchaseController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(TransPurchase $transpurchase)
 	{
-		//
+		return view('transaction.purchase.show', compact('transpurchase'));
 	}
 
 	/**
@@ -65,9 +79,10 @@ class TransPurchaseController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(TransPurchase $transpurchase)
 	{
-		//
+		$products=Product::all()->lists('name','id');
+		return view('transaction.purchase.edit', compact('transpurchase'),compact('products'));
 	}
 
 	/**
@@ -76,9 +91,11 @@ class TransPurchaseController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(TransPurchase $transpurchase, CreateTransPurchaseRequest $request)
 	{
-		//
+		$transpurchase->fill($request->all())->save();
+		
+		return redirect()->route('transpurchase.index');
 	}
 
 	/**
@@ -87,9 +104,14 @@ class TransPurchaseController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(TransPurchase $transpurchase)
 	{
-		//
+		$transpurchase->delete();
+		
+		return redirect()->route('transpurchase.index');
 	}
+
+	
+
 
 }

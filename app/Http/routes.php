@@ -14,6 +14,8 @@
 Route::model('pasien', 'App\Patient');
 Route::model('perawatan', 'App\Treatment');
 Route::model('produk', 'App\Product');
+Route::model('pembelian', 'App\TransPurchase');
+
 
 Route::resource('dummy', 'DummyController');
 
@@ -45,6 +47,17 @@ Route::get('perawatan/{perawatan}', ['as' => 'treatment.show', 'uses' => 'Treatm
 Route::get('perawatan/{perawatan}/ubah', ['as' => 'treatment.edit', 'uses' => 'TreatmentController@edit']);
 Route::put('perawatan/{perawatan}', ['as' => 'treatment.update', 'uses' => 'TreatmentController@update']);
 Route::get('perawatan/{perawatan}/hapus', ['as' => 'treatment.get_destroy', 'uses' => 'TreatmentController@destroy']);
+
+
+// transaction purchase
+Route::get('pembelian-produk/tambah', ['as' => 'transpurchase.create', 'uses' => 'TransPurchaseController@create']);
+Route::post('pembelian-produk', ['as' => 'transpurchase.store', 'uses' => 'TransPurchaseController@store']);
+Route::get('pembelian-produk', ['as' => 'transpurchase.index', 'uses' => 'TransPurchaseController@index']);
+Route::get('pembelian-produk/{pembelian}', ['as' => 'transpurchase.show', 'uses' => 'TransPurchaseController@show']);
+Route::get('pembelian-produk/{pembelian}/ubah', ['as' => 'transpurchase.edit', 'uses' => 'TransPurchaseController@edit']);
+Route::put('pembelian-produk/{pembelian}', ['as' => 'transpurchase.update', 'uses' => 'TransPurchaseController@update']);
+Route::get('pembelian-produk/{pembelian}/hapus', ['as' => 'transpurchase.get_destroy', 'uses' => 'TransPurchaseController@destroy']);
+
 
 
 
