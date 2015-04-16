@@ -1,3 +1,4 @@
+<?php $user = \Auth::user() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +22,8 @@
 				<li><a href="{{ url('konsultasi') }}">Tr Konsultasi</a></li>
 				<li><a href="{{ url('transaksi-perawatan') }}">Tr Perawatan</a></li>
 				<li><a href="{{ url('pembelian-produk') }}">Tr Pembelian</a></li>
-				<?php $user = \Auth::user() ?>
 				@if (!is_null($user))
-					<li><a href="#">{{ $user->username }}</a></li>
+					<li><a href="{{ url('/auth/logout') }}">{{ $user->username }}</a></li>
 				@endif
 
 			</ul>

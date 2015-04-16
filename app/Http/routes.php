@@ -86,7 +86,14 @@ Route::get('pembelian', 'TransPurchaseController@index');
 Route::get('konsultasi', 'ConsultationController@index');
 
 
-// Route::get('/', 'WelcomeController@index');
+Route::get('/', function() {
+	$user = \Auth::user();
+	
+	if (is_null($user))
+		return redirect(url('/auth/login'));
+	else
+		return redirect()->route('patient.index');
+});
 // Route::get('home', 'HomeController@index');
 Route::get('login', function()
 {
