@@ -37,7 +37,7 @@
 	<td>{{ $trans->id }}</td>
 	<td>{{ $trans->product_name }}</td>
 	<td>{{ $trans->quantity }}</td>
-	<td>{{ $trans->user_name }}</td>
+	<td>{{ $trans->username }}</td>
 	<td>{{ $trans->date }}</td>
 	<td>Rp. {{ $trans->buy_price * $trans->quantity }}</td>
 	<td>

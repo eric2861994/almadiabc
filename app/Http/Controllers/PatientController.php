@@ -16,9 +16,14 @@ class PatientController extends Controller {
 		$this->patient = $patient;
 	}
 
-	public function index()
+	public function index(Request $request)
 	{
-		$patients = $this->patient->get();
+		if ($request->name) {
+			$patients = $this->patient->where('name', 'like', '%'.$request->name.'%')->get();
+			
+		} else {
+			$patients = $this->patient->get();
+		}
 		
 		return view('patient.list', compact('patients'));
 	}

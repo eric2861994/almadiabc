@@ -19,7 +19,6 @@ Route::model('penjualan', 'App\TransSell');
 Route::model('trperawatan', 'App\TransTreatment');
 Route::model('konsultasi', 'App\Consultation');
 
-
 Route::resource('dummy', 'DummyController');
 
 // patient
@@ -62,15 +61,6 @@ Route::put('pembelian-produk/{pembelian}', ['as' => 'transpurchase.update', 'use
 Route::get('pembelian-produk/{pembelian}/hapus', ['as' => 'transpurchase.get_destroy', 'uses' => 'TransPurchaseController@destroy']);
 
 
-// transaction sell
-Route::get('penjualan-produk/tambah', ['as' => 'transsell.create', 'uses' => 'TransSellController@create']);
-Route::post('penjualan-produk', ['as' => 'transsell.store', 'uses' => 'TransSellController@store']);
-Route::get('penjualan-produk', ['as' => 'transsell.index', 'uses' => 'TransSellController@index']);
-Route::get('penjualan-produk/{penjualan}', ['as' => 'transsell.show', 'uses' => 'TransSellController@show']);
-Route::get('penjualan-produk/{penjualan}/ubah', ['as' => 'transsell.edit', 'uses' => 'TransSellController@edit']);
-Route::put('penjualan-produk/{penjualan}', ['as' => 'transsell.update', 'uses' => 'TransSellController@update']);
-Route::get('penjualan-produk/{penjualan}/hapus', ['as' => 'transsell.get_destroy', 'uses' => 'TransSellController@destroy']);
-
 
 // transaction treatment
 Route::get('transaksi-perawatan/tambah', ['as' => 'transtreatment.create', 'uses' => 'TransTreatmentController@create']);
@@ -97,12 +87,19 @@ Route::get('konsultasi/{konsultasi}/hapus', ['as' => 'consultation.get_destroy',
 // Route::get('konsultasi', 'ConsultationController@index');
 
 
-// Route::get('/', 'WelcomeController@index');
-// Route::get('home', 'HomeController@index');
-Route::get('login', function()
-{
-	return View::make('auth.login');
+Route::get('/', function() {
+	$user = \Auth::user();
+	
+	if (is_null($user))
+		return redirect(url('/auth/login'));
+	else
+		return redirect()->route('patient.index');
 });
+// Route::get('home', 'HomeController@index');
+// Route::get('login', function()
+	// {
+		// return View::make('auth.login');
+	// });
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
