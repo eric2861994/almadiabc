@@ -46,7 +46,7 @@
 	@endforeach
 	@if(count($products)==0)
 	<tr>
-	<th colspan="5"><h2><center>Tidak Ada Produk</center></h2></th>
+	<th colspan="7"><h2><center>Tidak Ada Produk</center></h2></th>
 	</tr>
 	@endif
 	</tbody>
