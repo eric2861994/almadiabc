@@ -24,7 +24,7 @@ class CreatePatientRequest extends Request {
 		return [
 			'name' => 'required|max:255',
 			'sex' => 'required',
-			'birthday' => 'required|date_format:d-m-Y',
+			'birthday' => 'required|date_format:Y-m-d',
 			'phone' => 'required|max:20'
 		];
 	}

@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Consultation extends Model {
 
-	protected $fillable = ['ID_pasien', 'tanggal', 'dokter', 'masalah', 'hasil_konsultasi', 'resep', 'harga'];
+	protected $fillable = ['id_patient', 'date', 'doctor', 'problem', 'result', 'recipe', 'price'];
+	public $timestamps = false;
 
 }

@@ -18,12 +18,12 @@ class ConsultationController extends Controller {
 	public function index()
 	{
 		$consultations=$this->consultation
-	           				->leftjoin('pasien', 'konsultasi.ID_pasien', '=', 'pasien.ID')
+	           				->leftjoin('patients', 'consultations.id_patient', '=', 'patients.id')
 	            			->get();
 		$totalprice=0;
 		foreach($consultations as $consultation)
 		{
-			$totalprice+=$consultation->harga;
+			$totalprice+=$consultation->price;
 		}
 		return view('consultation.list', compact('consultations'), compact('totalprice'));
 	}

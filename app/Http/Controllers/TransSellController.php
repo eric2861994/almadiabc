@@ -18,16 +18,16 @@ class TransSellController extends Controller {
 	public function index()
 	{
 		$transsells = $this->transsell
-       					   ->join('produk', 'transaksi_penjualan.ID_produk', '=', 'produk.ID')
-       					   ->leftjoin('pasien', 'pasien.ID', '=', 'transaksi_penjualan.ID_pasien')
-       					   ->select('transaksi_penjualan.ID', 'produk.nama as nama_produk', 'transaksi_penjualan.jumlah', 'pasien.nama as nama_pasien', 'transaksi_penjualan.tanggal', 'transaksi_penjualan.ID_pasien', 'produk.harga_jual')	 
+       					   ->join('products', 'trans_sells.id_product', '=', 'products.id')
+       					   ->leftjoin('patients', 'patients.id', '=', 'trans_sells.id_patient')
+       					   ->select('trans_sells.id', 'products.name as product_name', 'trans_sells.quantity', 'patients.name as patient_name', 'trans_sells.date', 'trans_sells.id_patient', 'products.sell_price')	 
         				   ->get();
 		
-		$totalharga = 0;
+		$totalprice = 0;
 		foreach($transsells as $trans) {
-			$totalharga = $totalharga + ($trans->harga_jual * $trans->jumlah);
+			$totalprice = $totalprice + ($trans->sell_price * $trans->quantity);
 		}
-		return view('transaction.sell', compact('transsells'), compact('totalharga'));
+		return view('transaction.sell', compact('transsells'), compact('totalprice'));
 	}
 
 	/**

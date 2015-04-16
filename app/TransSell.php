@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransSell extends Model {
 
-	protected $fillable = ['ID_pasien', 'ID_produk', 'jumlah'];
+	protected $fillable = ['id_patient', 'id_product', 'quantity'];
+	public $timestamps = false;
 
 }
