@@ -33,7 +33,7 @@
 	<td>{{ $treatment->description }}</td>
 	<td>
 	<a href="{{ route('treatment.edit', $treatment->id) }}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="{{ route('treatment.get_destroy', $treatment->id) }}"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
+	<a href="{{ route('treatment.get_destroy', $treatment->id) }}"><button class="btn btn-danger" onclick="return deleteConfirmation();"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
 	@endforeach
