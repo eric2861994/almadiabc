@@ -48,6 +48,10 @@
 	@endforeach
 	@if(count($transpurchases)>0)
 	<tr><td></td><td></td><td></td><td></td><th>Total Pembelian</th><td>Rp. {{ $totalprice }}</td><td></td></tr>
+	@else
+	<tr>
+	<th colspan="7"><h2><center>Tidak Ada Transaksi</center></h2></th>
+	</tr>
 	@endif
 </tbody>
 </table>
