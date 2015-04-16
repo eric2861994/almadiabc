@@ -24,7 +24,7 @@ class TransPurchaseController extends Controller {
        					   	   ->join('products', 'trans_purchases.id_product', '=', 'products.id')
        					   	   ->join('users', 'trans_purchases.id_user', '=', 'users.id')
        					   	   ->orderby('trans_purchases.id', 'asc')
-       					   	   ->select('trans_purchases.id','products.name as product_name','trans_purchases.quantity','users.username', 'trans_purchases.date','products.buy_price' )	 
+       					   	   ->select('trans_purchases.id','products.name as product_name','trans_purchases.quantity','users.username', 'trans_purchases.date','products.buy_price' )
         				       ->get();
 
 		$totalprice=0;

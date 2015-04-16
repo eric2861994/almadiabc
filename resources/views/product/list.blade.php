@@ -6,10 +6,10 @@
 <p>Berikut ini adalah produk yang terdaftar di sistem.</p>
 
 <h3>Mencari Produk</h3>
-<form>
+<form method="get">
 <div class="form-group">
 <label for="query">Nama Produk</label>
-<input type="text" class="form-control" id="query" />
+<input name="name" type="text" class="form-control" id="query" />
 </div>
 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Cari</button>
 </form>

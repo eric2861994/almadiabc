@@ -16,9 +16,13 @@ class ProductController extends Controller {
 		$this->product = $product;
 	}
 	
-	public function index()
+	public function index(Request $request)
 	{
-		$products = $this->product->get();
+		if ($request->name)
+			$products = $this->product->where('name', 'like', '%'.$request->name.'%')->get();
+		else
+			$products = $this->product->get();
+		
 		
 		return view('product.list', compact('products'));
 	}

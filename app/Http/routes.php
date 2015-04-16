@@ -15,7 +15,8 @@ Route::model('pasien', 'App\Patient');
 Route::model('perawatan', 'App\Treatment');
 Route::model('produk', 'App\Product');
 Route::model('pembelian', 'App\TransPurchase');
-
+Route::model('penjualan', 'App\TransSell');
+Route::model('trperawatan', 'App\TransTreatment');
 
 Route::resource('dummy', 'DummyController');
 
@@ -59,6 +60,15 @@ Route::put('pembelian-produk/{pembelian}', ['as' => 'transpurchase.update', 'use
 Route::get('pembelian-produk/{pembelian}/hapus', ['as' => 'transpurchase.get_destroy', 'uses' => 'TransPurchaseController@destroy']);
 
 
+
+// transaction treatment
+Route::get('transaksi-perawatan/tambah', ['as' => 'transtreatment.create', 'uses' => 'TransTreatmentController@create']);
+Route::post('transaksi-perawatan', ['as' => 'transtreatment.store', 'uses' => 'TransTreatmentController@store']);
+Route::get('transaksi-perawatan', ['as' => 'transtreatment.index', 'uses' => 'TransTreatmentController@index']);
+Route::get('transaksi-perawatan/{trperawatan}', ['as' => 'transtreatment.show', 'uses' => 'TransTreatmentController@show']);
+Route::get('transaksi-perawatan/{trperawatan}/ubah', ['as' => 'transtreatment.edit', 'uses' => 'TransTreatmentController@edit']);
+Route::put('transaksi-perawatan/{trperawatan}', ['as' => 'transtreatment.update', 'uses' => 'TransTreatmentController@update']);
+Route::get('transaksi-perawatan/{trperawatan}/hapus', ['as' => 'transtreatment.get_destroy', 'uses' => 'TransTreatmentController@destroy']);
 
 
 Route::get('penjualan', 'TransSellController@index');
