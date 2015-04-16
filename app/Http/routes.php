@@ -15,7 +15,6 @@ Route::model('pasien', 'App\Patient');
 Route::model('perawatan', 'App\Treatment');
 Route::model('produk', 'App\Product');
 Route::model('pembelian', 'App\TransPurchase');
-Route::model('penjualan', 'App\TransSell');
 
 
 Route::resource('dummy', 'DummyController');
@@ -60,15 +59,6 @@ Route::put('pembelian-produk/{pembelian}', ['as' => 'transpurchase.update', 'use
 Route::get('pembelian-produk/{pembelian}/hapus', ['as' => 'transpurchase.get_destroy', 'uses' => 'TransPurchaseController@destroy']);
 
 
-// transaction sell
-Route::get('penjualan-produk/tambah', ['as' => 'transsell.create', 'uses' => 'TransSellController@create']);
-Route::post('penjualan-produk', ['as' => 'transsell.store', 'uses' => 'TransSellController@store']);
-Route::get('penjualan-produk', ['as' => 'transsell.index', 'uses' => 'TransSellController@index']);
-Route::get('penjualan-produk/{penjualan}', ['as' => 'transsell.show', 'uses' => 'TransSellController@show']);
-Route::get('penjualan-produk/{penjualan}/ubah', ['as' => 'transsell.edit', 'uses' => 'TransSellController@edit']);
-Route::put('penjualan-produk/{penjualan}', ['as' => 'transsell.update', 'uses' => 'TransSellController@update']);
-Route::get('penjualan-produk/{penjualan}/hapus', ['as' => 'transsell.get_destroy', 'uses' => 'TransSellController@destroy']);
-
 
 
 Route::get('penjualan', 'TransSellController@index');
@@ -78,10 +68,10 @@ Route::get('konsultasi', 'ConsultationController@index');
 
 // Route::get('/', 'WelcomeController@index');
 // Route::get('home', 'HomeController@index');
-Route::get('login', function()
-{
-	return View::make('auth.login');
-});
+// Route::get('login', function()
+	// {
+		// return View::make('auth.login');
+	// });
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
