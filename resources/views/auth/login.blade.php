@@ -1,6 +1,16 @@
-@extends('app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Almadina Beauty Centre</title>
+	
+	<link href="{{ url('css/bootstrap.css') }}" rel="stylesheet" />
+	<script type="text/javascript" src="{{ url('js/bootstrap.js') }}"></script>
+</head>
 
-@section('content')
+<body>
+<div class="container">
+	<h1><img height="100" width="117" src="{{ url('img/logo-almadina.png') }}" alt="logo" /> Almadina Beauty Centre</h1>
+	
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -18,20 +28,18 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/login">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+					{!! Form::open(['url' => url('/auth/login'), 'class' => 'form-horizontal']) !!}
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
+							{!! Form::label('username', 'Username', ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								{!! Form::text('username', null, ['class' => 'form-control']) !!}
 							</div>
 						</div>
-
+						
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
+							{!! Form::label('password', 'Password', ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
+								{!! Form::password('password', ['class' => 'form-control']) !!}
 							</div>
 						</div>
 
@@ -60,4 +68,6 @@
 		</div>
 	</div>
 </div>
-@endsection
+</div>
+</body>
+</html>
