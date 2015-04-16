@@ -41,7 +41,7 @@
 	<td>
 	<a href="{{ route('patient.show', $patient->id) }}"><button class="btn btn-info"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Lihat</button></a>
 	<a href="{{ route('patient.edit', $patient->id) }}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Ubah</button></a>
-	<a href="{{ route('patient.get_destroy', $patient->id) }}"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
+	<a href="{{ route('patient.get_destroy', $patient->id) }}"><button class="btn btn-danger" onclick="return deleteConfirmation();"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
 	@endforeach

@@ -16,8 +16,12 @@ function number_form($name, $default = null, $attributes = null) {
 			$generated .= $value . '" ';
 		}
 	$generated .= 'name="' . $name . '" type="number" ';
-	if (!is_null($default))
+	if (Request::old($name))
+		$generated .= 'value="' . Request::old($name) . '" ';
+		
+	else if (!is_null($default))
 		$generated .= 'value="' . $default . '" ';
+		
 	$generated .= 'id="' . $name . '">';
 	
 	return $generated;

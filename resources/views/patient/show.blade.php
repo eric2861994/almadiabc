@@ -21,7 +21,7 @@
 
 <p>
 <a href="{{ route('patient.show_edit', $patient->id) }}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-<a href="{{ route('patient.get_destroy', $patient->id) }}"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
+<a href="{{ route('patient.get_destroy', $patient->id) }}"><button class="btn btn-danger" onclick="return deleteConfirmation();"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 </p>
 
 <h2>Daftar Konsultasi pasien</h2> 
@@ -51,10 +51,15 @@
 	<td>{{ $consultation->price }}</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="{{ route('patient.get_destroy_consultation', $consultation->id) }}"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
+	<a href="{{ route('patient.get_destroy_consultation', $consultation->id) }}"><button class="btn btn-danger" onclick="return deleteConfirmation();"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
 	@endforeach
+	@if( count($patient_consultations) === 0 )
+	<tr>
+	<th colspan="7"><h2><center>Tidak Ada Konsultasi</center></h2></th>
+	</tr>
+	@endif
 </tbody>
 </table>
 @endsection

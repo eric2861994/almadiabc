@@ -5,7 +5,9 @@
 	<title>Almadina Beauty Centre</title>
 	
 	<link href="{{ url('css/bootstrap.css') }}" rel="stylesheet" />
+	<script type="text/javascript" src="{{ url('js/jquery-2.1.3.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url('js/bootstrap.js') }}"></script>
+	<script type="text/javascript" src="{{ url('js/almadina.js') }}"></script>
 </head>
 
 <body>
