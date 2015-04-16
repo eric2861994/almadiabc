@@ -25,15 +25,32 @@ class TransTreatmentController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		$transtreatments = $this->transtreatment
+		$transtreatments = null;
+
+		if ($request->year) {
+			if(strlen($request->month)==1) {
+				$request->month = '0'.$request->month;
+			}
+			$transtreatments = $this->transtreatment
+       					   ->join('treatments', 'trans_treatments.id_treatment', '=', 'treatments.id')
+       					   ->leftjoin('patients', 'trans_treatments.id_patient', '=', 'patients.id')
+       					   ->orderby('trans_treatments.id','asc')
+       					   ->select('trans_treatments.id', 'patients.name as patient_name', 'treatments.name as treatment_name','trans_treatments.date', 'treatments.price')	 
+        				   ->where('date', 'like', $request->year.'%')
+        				   ->where('date', 'like', '%-'.$request->month.'-%')
+        				   ->get();
+			
+		} else {
+			$transtreatments = $this->transtreatment
        					   ->join('treatments', 'trans_treatments.id_treatment', '=', 'treatments.id')
        					   ->leftjoin('patients', 'trans_treatments.id_patient', '=', 'patients.id')
        					   ->orderby('trans_treatments.id','asc')
        					   ->select('trans_treatments.id', 'patients.name as patient_name', 'treatments.name as treatment_name','trans_treatments.date', 'treatments.price')	 
         				   ->get();
-		
+		}
+
 		$totalprice = 0;
 		foreach($transtreatments as $trans) {
 			$totalprice += $trans->price;

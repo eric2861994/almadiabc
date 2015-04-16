@@ -18,13 +18,30 @@ class ConsultationController extends Controller {
 		$this->consultation = $consultation;
 	}
 
-	public function index()
+	public function index(Request $request)
 	{
-		$consultations=$this->consultation
-	           				->leftjoin('patients', 'consultations.id_patient', '=', 'patients.id')
-	           				->orderby('consultations.id','asc')
-	           				->select('consultations.id', 'patients.name', 'consultations.doctor', 'consultations.date', 'consultations.problem', 'consultations.result', 'consultations.recipe','consultations.price')
-	            			->get();
+		$transtreatments = null;
+
+		if ($request->year) {
+			if(strlen($request->month)==1) {
+				$request->month = '0'.$request->month;
+			}
+			$consultations=$this->consultation
+		           				->leftjoin('patients', 'consultations.id_patient', '=', 'patients.id')
+		           				->orderby('consultations.id','asc')
+		           				->select('consultations.id', 'patients.name', 'consultations.doctor', 'consultations.date', 'consultations.problem', 'consultations.result', 'consultations.recipe','consultations.price')
+	        				   	->where('date', 'like', $request->year.'%')
+	        				   	->where('date', 'like', '%-'.$request->month.'-%')
+	        				   	->get();
+			
+		} else {
+			$consultations=$this->consultation
+		           				->leftjoin('patients', 'consultations.id_patient', '=', 'patients.id')
+		           				->orderby('consultations.id','asc')
+		           				->select('consultations.id', 'patients.name', 'consultations.doctor', 'consultations.date', 'consultations.problem', 'consultations.result', 'consultations.recipe','consultations.price')
+		            			->get();
+		}
+
 		$totalprice=0;
 		foreach($consultations as $consultation)
 		{

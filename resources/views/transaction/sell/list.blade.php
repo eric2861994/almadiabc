@@ -10,8 +10,8 @@
 
 <form class="form-inline">
 <div class="form-group">
-<label for="sel1">Tahun</label>
-{!! Form::selectYear('sel1', 2012, 2015, 2015, ['class' => 'form-control']) !!}
+<label for="year">Tahun</label>
+{!! Form::selectYear('year', 2012, 2015, 2015, ['class' => 'form-control']) !!}
 <!-- <input list="browsers" name="browser">
 <datalist id="browsers">
   <option value="Internet Explorer">
@@ -38,8 +38,8 @@
 </div> -->
 </div>
 <div class="form-group">
-<label for="sel2">Bulan</label>
-{!! Form::selectMonth('sel2', 4, ['class' => 'form-control']) !!}
+<label for="month">Bulan</label>
+{!! Form::selectMonth('month', 4, ['class' => 'form-control']) !!}
 </div>
 <button type="submit" class="btn btn-info">Go</button>
 </form>

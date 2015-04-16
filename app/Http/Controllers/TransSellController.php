@@ -20,15 +20,32 @@ class TransSellController extends Controller {
 		$this->transsell = $transsell;
 	}
 
-	public function index()
+	public function index(Request $request)
 	{
-		$transsells = $this->transsell
-       					   ->join('products', 'trans_sells.id_product', '=', 'products.id')
-       					   ->leftjoin('patients', 'patients.id', '=', 'trans_sells.id_patient')
-       					   ->orderby('trans_sells.id','asc')
-       					   ->select('trans_sells.id', 'products.name as product_name', 'trans_sells.quantity', 'patients.name as patient_name', 'trans_sells.date', 'trans_sells.id_patient', 'products.sell_price')	 
-        				   ->get();
-		
+		$transtreatments = null;
+
+		if ($request->year) {
+			if(strlen($request->month)==1) {
+				$request->month = '0'.$request->month;
+			}
+			$transsells = $this->transsell
+	       					   ->join('products', 'trans_sells.id_product', '=', 'products.id')
+	       					   ->leftjoin('patients', 'patients.id', '=', 'trans_sells.id_patient')
+	       					   ->orderby('trans_sells.id','asc')
+	       					   ->select('trans_sells.id', 'products.name as product_name', 'trans_sells.quantity', 'patients.name as patient_name', 'trans_sells.date', 'trans_sells.id_patient', 'products.sell_price')	 
+	        				   ->where('date', 'like', $request->year.'%')
+	        				   ->where('date', 'like', '%-'.$request->month.'-%')
+	        				   ->get();
+			
+		} else {
+			$transsells = $this->transsell
+	       					   ->join('products', 'trans_sells.id_product', '=', 'products.id')
+	       					   ->leftjoin('patients', 'patients.id', '=', 'trans_sells.id_patient')
+	       					   ->orderby('trans_sells.id','asc')
+	       					   ->select('trans_sells.id', 'products.name as product_name', 'trans_sells.quantity', 'patients.name as patient_name', 'trans_sells.date', 'trans_sells.id_patient', 'products.sell_price')	 
+	        				   ->get();
+		}
+
 		$totalprice = 0;
 		foreach($transsells as $trans) {
 			$totalprice = $totalprice + ($trans->sell_price * $trans->quantity);
