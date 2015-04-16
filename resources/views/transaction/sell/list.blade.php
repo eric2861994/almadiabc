@@ -73,7 +73,7 @@
 	<td>{{ $trans->sell_price * $trans->quantity }}</td>
 	<td>
 	<a href="{{ route('transsell.edit', $trans->id) }}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="{{ route('transsell.get_destroy', $trans->id) }}"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
+	<a href="{{ route('transsell.get_destroy', $trans->id) }}"><button class="btn btn-danger" onclick="return deleteConfirmation();"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
 	@endforeach
