@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Treatment extends Model {
 
-	protected $table = 'perawatan';
-	protected $fillable = ['nama', 'deskirpsi', 'harga'];
+	public $timestamps = false;
+	protected $fillable = ['name', 'description', 'price'];
 
 }
