@@ -15,6 +15,7 @@ Route::model('pasien', 'App\Patient');
 Route::model('perawatan', 'App\Treatment');
 Route::model('produk', 'App\Product');
 Route::model('pembelian', 'App\TransPurchase');
+Route::model('penjualan', 'App\TransSell');
 
 
 Route::resource('dummy', 'DummyController');
@@ -58,6 +59,15 @@ Route::get('pembelian-produk/{pembelian}/ubah', ['as' => 'transpurchase.edit', '
 Route::put('pembelian-produk/{pembelian}', ['as' => 'transpurchase.update', 'uses' => 'TransPurchaseController@update']);
 Route::get('pembelian-produk/{pembelian}/hapus', ['as' => 'transpurchase.get_destroy', 'uses' => 'TransPurchaseController@destroy']);
 
+
+// transaction sell
+Route::get('penjualan-produk/tambah', ['as' => 'transsell.create', 'uses' => 'TransSellController@create']);
+Route::post('penjualan-produk', ['as' => 'transsell.store', 'uses' => 'TransSellController@store']);
+Route::get('penjualan-produk', ['as' => 'transsell.index', 'uses' => 'TransSellController@index']);
+Route::get('penjualan-produk/{penjualan}', ['as' => 'transsell.show', 'uses' => 'TransSellController@show']);
+Route::get('penjualan-produk/{penjualan}/ubah', ['as' => 'transsell.edit', 'uses' => 'TransSellController@edit']);
+Route::put('penjualan-produk/{penjualan}', ['as' => 'transsell.update', 'uses' => 'TransSellController@update']);
+Route::get('penjualan-produk/{penjualan}/hapus', ['as' => 'transsell.get_destroy', 'uses' => 'TransSellController@destroy']);
 
 
 

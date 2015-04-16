@@ -4,7 +4,7 @@
 <h1>Daftar Transaksi Penjualan</h1>
 
 <p>Berikut ini adalah transaksi Penjualan yang terdaftar di sistem.</p>
-<a href="tambah"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
+<a href="{{ route('transsell.create') }}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
 
 <h3>Pemilihan waktu</h3>
 
@@ -72,8 +72,8 @@
 	<td>{{ $trans->date }}</td>
 	<td>{{ $trans->sell_price * $trans->quantity }}</td>
 	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
+	<a href="{{ route('transsell.edit', $trans->id) }}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
+	<a href="{{ route('transsell.get_destroy', $trans->id) }}"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
 	@endforeach

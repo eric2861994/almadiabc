@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\TransSell;
+use App\Http\Requests\CreateTransSellRequest;
+
+use App\Patient;
+use App\Product;
+use Carbon\Carbon;
 
 class TransSellController extends Controller {
 
@@ -20,6 +25,7 @@ class TransSellController extends Controller {
 		$transsells = $this->transsell
        					   ->join('products', 'trans_sells.id_product', '=', 'products.id')
        					   ->leftjoin('patients', 'patients.id', '=', 'trans_sells.id_patient')
+       					   ->orderby('trans_sells.id','asc')
        					   ->select('trans_sells.id', 'products.name as product_name', 'trans_sells.quantity', 'patients.name as patient_name', 'trans_sells.date', 'trans_sells.id_patient', 'products.sell_price')	 
         				   ->get();
 		
@@ -27,7 +33,7 @@ class TransSellController extends Controller {
 		foreach($transsells as $trans) {
 			$totalprice = $totalprice + ($trans->sell_price * $trans->quantity);
 		}
-		return view('transaction.sell', compact('transsells'), compact('totalprice'));
+		return view('transaction.sell.list', compact('transsells'), compact('totalprice'));
 	}
 
 	/**
@@ -37,7 +43,9 @@ class TransSellController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$products=Product::all()->lists('name','id');
+		$patients=Patient::all()->lists('name','id');
+		return view('transaction.sell.create', compact('products'),compact('patients'));
 	}
 
 	/**
@@ -45,9 +53,16 @@ class TransSellController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateTransSellRequest $request)
 	{
-		//
+		$r = $request->all();
+		$t = new TransSell;
+		$t->fill($r);
+		$t->id_patient = 1; //harusnya user yg login
+		$t->date = Carbon::now();
+		$t->save();		
+
+		return redirect()->route('transsell.index');
 	}
 
 	/**
@@ -56,7 +71,7 @@ class TransSellController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(TransSell $transsell)
 	{
 		//
 	}
@@ -67,9 +82,11 @@ class TransSellController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(TransSell $transsell)
 	{
-		//
+		$products=Product::all()->lists('name','id');
+		$patients=Patient::all()->lists('name','id');
+		return view('transaction.sell.edit', compact('transsell'), compact('products'))->with('patients',$patients);
 	}
 
 	/**
@@ -78,9 +95,11 @@ class TransSellController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(TransSell $transsell, CreateTransSellRequest $request)
 	{
-		//
+		$transsell->fill($request->all())->save();
+		
+		return redirect()->route('transsell.index');
 	}
 
 	/**
@@ -89,9 +108,11 @@ class TransSellController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(TransSell $transsell)
 	{
-		//
+		$transsell->delete();
+		
+		return redirect()->route('transsell.index');
 	}
 
 }
