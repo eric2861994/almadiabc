@@ -10,11 +10,11 @@
 <form class="form-inline">
 <div class="form-group">
 <label for="year">Tahun</label>
-{!! Form::selectYear('sel1', 2012, 2015, 2015, ['class' => 'form-control']) !!}
+{!! Form::selectYear('year', 2012, 2015, 2015, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
 <label for="month">Bulan</label>
-{!! Form::selectMonth('sel2', 4, ['class' => 'form-control']) !!}
+{!! Form::selectMonth('month', 4, ['class' => 'form-control']) !!}
 </div>
 <button type="submit" class="btn btn-info">Go</button>
 </form>

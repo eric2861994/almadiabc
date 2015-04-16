@@ -25,11 +25,14 @@ class TransTreatmentController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
 		$transtreatments = null;
 
 		if ($request->year) {
+			if(strlen($request->month)==1) {
+				$request->month = '0'.$request->month;
+			}
 			$transtreatments = $this->transtreatment
        					   ->join('treatments', 'trans_treatments.id_treatment', '=', 'treatments.id')
        					   ->leftjoin('patients', 'trans_treatments.id_patient', '=', 'patients.id')
