@@ -37,7 +37,7 @@ Route::get('produk', ['as' => 'product.index', 'uses' => 'ProductController@inde
 Route::get('produk/{produk}', ['as' => 'product.show', 'uses' => 'ProductController@show']);
 Route::get('produk/{produk}/ubah', ['as' => 'product.edit', 'uses' => 'ProductController@edit']);
 Route::put('produk/{produk}', ['as' => 'product.update', 'uses' => 'ProductController@update']);
-Route::get('produk/{produk}/hapus', ['as' => 'product.get_destroy', 'uses' => 'ProductController@destroy']);
+Route::get('produk/{produk}/hapus', ['middleware' => 'auth', 'as' => 'product.get_destroy', 'uses' => 'ProductController@destroy']);
 
 
 // treatment
@@ -76,12 +76,12 @@ Route::get('pembelian', 'TransPurchaseController@index');
 Route::get('konsultasi', 'ConsultationController@index');
 
 
-Route::get('/', 'WelcomeController@index');
-Route::get('home', 'HomeController@index');
-Route::get('login', function()
-	{
-		return View::make('auth.login');
-	});
+// Route::get('/', 'WelcomeController@index');
+// Route::get('home', 'HomeController@index');
+// Route::get('login', function()
+	// {
+		// return View::make('auth.login');
+	// });
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

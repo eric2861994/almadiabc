@@ -19,6 +19,8 @@ class AuthController extends Controller {
 	*/
 
 	use AuthenticatesAndRegistersUsers;
+	
+	protected $redirectTo = '/pasien';
 
 	/**
 	 * Create a new authentication controller instance.
