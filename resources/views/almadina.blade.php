@@ -17,9 +17,9 @@
 				<li><a href="{{ url('pasien') }}">Pasien</a></li>
 				<li><a href="{{ url('produk') }}">Produk</a></li>
 				<li><a href="{{ url('perawatan') }}">Perawatan</a></li>
-				<li><a href="{{ url('penjualan') }}">Tr Penjualan</a></li>
+				<li><a href="{{ url('penjualan-produk') }}">Tr Penjualan</a></li>
 				<li><a href="{{ url('konsultasi') }}">Tr Konsultasi</a></li>
-				<li><a href="{{ url('tr_perawatan') }}">Tr Perawatan</a></li>
+				<li><a href="{{ url('transaksi-perawatan') }}">Tr Perawatan</a></li>
 				<li><a href="{{ url('pembelian-produk') }}">Tr Pembelian</a></li>
 				<?php $user = \Auth::user() ?>
 				@if (!is_null($user))

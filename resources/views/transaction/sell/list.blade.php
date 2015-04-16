@@ -77,7 +77,13 @@
 	</td>
 	</tr>
 	@endforeach
+	@if(count($transsells)>0)
 	<tr><td></td><td></td><td></td><td></td><th>Total Penjualan</th><td>{{ $totalprice }}</td><td></td></tr>
+	@else
+	<tr>
+	<th colspan="7"><h2><center>Tidak Ada Transaksi</center></h2></th>
+	</tr>
+	@endif
 </tbody>
 </table>
 @endsection
