@@ -87,7 +87,7 @@ Route::put('transaksi-perawatan/{trperawatan}', ['middleware' => 'auth','as' => 
 Route::get('transaksi-perawatan/{trperawatan}/hapus', ['middleware' => 'auth','as' => 'transtreatment.get_destroy', 'uses' => 'TransTreatmentController@destroy']);
 
 
-// transaction treatment
+// transaction konsultasi
 Route::get('konsultasi/tambah', ['middleware' => 'auth','as' => 'consultation.create', 'uses' => 'ConsultationController@create']);
 Route::post('konsultasi', ['middleware' => 'auth','as' => 'consultation.store', 'uses' => 'ConsultationController@store']);
 Route::get('konsultasi', ['middleware' => 'auth','as' => 'consultation.index', 'uses' => 'ConsultationController@index']);

@@ -4,8 +4,10 @@
 <head>
 	<title>Almadina Beauty Centre</title>
 	
-	<link href="{{ url('css/bootstrap.css') }}" rel="stylesheet" />
-	<script type="text/javascript" src="{{ url('js/bootstrap.js') }}"></script>
+	<link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet" />
+	<link href="{{ url('css/bootstrap-theme.min.css') }}" rel="stylesheet" />
+	<script type="text/javascript" src="{{ url('js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url('js/jquery.min.js') }}"></script>
 </head>
 
 <body>
@@ -23,7 +25,7 @@
 				<li><a href="{{ url('transaksi-perawatan') }}">Tr Perawatan</a></li>
 				<li><a href="{{ url('pembelian-produk') }}">Tr Pembelian</a></li>
 				@if (!is_null($user))
-					<li><a href="{{ url('/auth/logout') }}">{{ $user->username }}</a></li>
+					<li><a href="{{ url('/auth/logout') }}"><font color="blue">Logout</font></a></li>
 				@endif
 
 			</ul>

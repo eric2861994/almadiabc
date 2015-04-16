@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Patient;
-use App\Http\Requests\CreatePatientRequest;
 use App\Consultation;
+use App\TransSell;
+use App\TransTreatment;
+use App\Http\Requests\CreatePatientRequest;
 
 class PatientController extends Controller {
 
@@ -129,9 +131,19 @@ class PatientController extends Controller {
 	 */
 	public function destroy(Patient $patient)
 	{
-		$patient->delete();
+		$id_patient = $patient->id;
+
+		$consultations = Consultation::where('id_patient', $id_patient)->get();
+		$trans_sells = TransSell::where('id_patient', $id_patient)->get();
+		$trans_treatments = TransTreatment::where('id_patient', $id_patient)->get();
+
+		if(count($consultations)>0 or count($trans_sells)>0 or count($trans_treatments)>0) {
+			return redirect()->back()->with('message', 'Pasien gagal dihapus, terdapat transaksi dengan pasien yang bersangkutan');
+		} else {
+			$patient->delete();
 		
-		return redirect()->route('patient.index');
+			return redirect()->route('patient.index');
+		}
 	}
 
 	public function destroy_consultation(Consultation $consultation)

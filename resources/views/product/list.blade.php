@@ -17,6 +17,14 @@
 <h3>Tabel Produk</h3>
 <a href="{{ route('product.create') }}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
 
+@if(!is_null(Session::get('message')))
+	<br><br>
+	<div class="alert alert-danger">
+        <span class="close" data-dismiss="alert">&times;</span>
+        <strong>Error!</strong> {{ Session::get('message') }}
+    </div>
+@endif
+
 <table class="table table-hover">
 <thead>
 	<tr>
