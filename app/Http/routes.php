@@ -13,6 +13,7 @@
 
 Route::model('pasien', 'App\Patient');
 Route::model('perawatan', 'App\Treatment');
+Route::model('produk', 'App\Product');
 
 Route::resource('dummy', 'DummyController');
 
@@ -27,9 +28,13 @@ Route::get('pasien/{pasien}/hapus', ['as' => 'patient.get_destroy', 'uses' => 'P
 
 
 // product
-Route::get('produk', ['as' => 'product.index', 'uses' => 'ProductController@index']);
 Route::get('produk/tambah', ['as' => 'product.create', 'uses' => 'ProductController@create']);
 Route::post('produk', ['as' => 'product.store', 'uses' => 'ProductController@store']);
+Route::get('produk', ['as' => 'product.index', 'uses' => 'ProductController@index']);
+Route::get('produk/{produk}', ['as' => 'product.show', 'uses' => 'ProductController@show']);
+Route::get('produk/{produk}/ubah', ['as' => 'product.edit', 'uses' => 'ProductController@edit']);
+Route::put('produk/{produk}', ['as' => 'product.update', 'uses' => 'ProductController@update']);
+Route::get('produk/{produk}/hapus', ['as' => 'product.get_destroy', 'uses' => 'ProductController@destroy']);
 
 
 // treatment

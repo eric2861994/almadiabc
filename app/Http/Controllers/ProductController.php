@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\CreateProductRequest;
 use App\Product;
 
 class ProductController extends Controller {
@@ -14,6 +15,7 @@ class ProductController extends Controller {
 	public function __construct(Product $product) {
 		$this->product = $product;
 	}
+	
 	public function index()
 	{
 		$products = $this->product->get();
@@ -28,6 +30,7 @@ class ProductController extends Controller {
 	 */
 	public function create()
 	{
+		
 		return view('product.create');
 	}
 
@@ -36,7 +39,7 @@ class ProductController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(CreateProductRequest $request)
 	{
 		$this->product->create($request->all());
 		
@@ -49,9 +52,9 @@ class ProductController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Product $product)
 	{
-		//
+		return view('product.show', compact('product'));
 	}
 
 	/**
@@ -60,9 +63,9 @@ class ProductController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Product $product)
 	{
-		//
+		return view('product.edit', compact('product'));
 	}
 
 	/**
@@ -71,9 +74,11 @@ class ProductController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Product $product, CreateProductRequest $request)
 	{
-		//
+		$product->fill($request->all())->save();
+		
+		return redirect()->route('product.index');
 	}
 
 	/**
@@ -82,9 +87,11 @@ class ProductController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Product $product)
 	{
-		//
+		$product->delete();
+		
+		return redirect()->route('product.index');
 	}
 
 }

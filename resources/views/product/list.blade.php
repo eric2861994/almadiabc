@@ -39,8 +39,8 @@
 	<td>{{ $product->buy_price }}</td>
 	<td>{{ $product->description }}</td>
 	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
+	<a href="{{ route('product.edit', $product->id) }}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
+	<a href="{{ route('product.get_destroy', $product->id) }}"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
 	@endforeach
