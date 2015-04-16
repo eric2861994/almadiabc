@@ -31,6 +31,11 @@ Route::put('pasien/{pasien}', ['as' => 'patient.update', 'uses' => 'PatientContr
 Route::get('pasien/{pasien}/hapus', ['as' => 'patient.get_destroy', 'uses' => 'PatientController@destroy']);
 
 
+Route::get('pasien/{pasien}/showedit', ['as' => 'patient.show_edit', 'uses' => 'PatientController@showedit']);
+Route::put('pasien/{pasien}/showupdate', ['as' => 'patient.show_update', 'uses' => 'PatientController@showupdate']);
+Route::get('pasien/{konsultasi}/hapuskonsultasi', ['as' => 'patient.get_destroy_consultation', 'uses' => 'PatientController@destroy_consultation']);
+
+
 // product
 Route::get('produk/tambah', ['as' => 'product.create', 'uses' => 'ProductController@create']);
 Route::post('produk', ['as' => 'product.store', 'uses' => 'ProductController@store']);
@@ -60,6 +65,15 @@ Route::get('pembelian-produk/{pembelian}/ubah', ['as' => 'transpurchase.edit', '
 Route::put('pembelian-produk/{pembelian}', ['as' => 'transpurchase.update', 'uses' => 'TransPurchaseController@update']);
 Route::get('pembelian-produk/{pembelian}/hapus', ['as' => 'transpurchase.get_destroy', 'uses' => 'TransPurchaseController@destroy']);
 
+// transaction sell
+Route::get('penjualan-produk/tambah', ['as' => 'transsell.create', 'uses' => 'TransSellController@create']);
+Route::post('penjualan-produk', ['as' => 'transsell.store', 'uses' => 'TransSellController@store']);
+Route::get('penjualan-produk', ['as' => 'transsell.index', 'uses' => 'TransSellController@index']);
+Route::get('penjualan-produk/{penjualan}', ['as' => 'transsell.show', 'uses' => 'TransSellController@show']);
+Route::get('penjualan-produk/{penjualan}/ubah', ['as' => 'transsell.edit', 'uses' => 'TransSellController@edit']);
+Route::put('penjualan-produk/{penjualan}', ['as' => 'transsell.update', 'uses' => 'TransSellController@update']);
+Route::get('penjualan-produk/{penjualan}/hapus', ['as' => 'transsell.get_destroy', 'uses' => 'TransSellController@destroy']);
+
 
 
 // transaction treatment
@@ -81,10 +95,6 @@ Route::get('konsultasi/{konsultasi}/ubah', ['as' => 'consultation.edit', 'uses' 
 Route::put('konsultasi/{konsultasi}', ['as' => 'consultation.update', 'uses' => 'ConsultationController@update']);
 Route::get('konsultasi/{konsultasi}/hapus', ['as' => 'consultation.get_destroy', 'uses' => 'ConsultationController@destroy']);
 
-
-// Route::get('penjualan', 'TransSellController@index');
-// Route::get('pembelian', 'TransPurchaseController@index');
-// Route::get('konsultasi', 'ConsultationController@index');
 
 
 Route::get('/', function() {

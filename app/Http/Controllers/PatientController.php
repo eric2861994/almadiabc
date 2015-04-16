@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Patient;
 use App\Http\Requests\CreatePatientRequest;
+use App\Consultation;
 
 class PatientController extends Controller {
 
@@ -78,6 +79,8 @@ class PatientController extends Controller {
 		return view('patient.edit', compact('patient'));
 	}
 
+
+
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -85,6 +88,33 @@ class PatientController extends Controller {
 	 * @return Response
 	 */
 	public function update(Patient $patient, CreatePatientRequest $request)
+	{
+		$patient->fill($request->all())->save();
+		
+		return redirect()->route('patient.index');
+	}
+
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function showedit(Patient $patient)
+	{
+		return view('patient.edit', compact('patient'));
+	}
+
+	
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function showupdate(Patient $patient, CreatePatientRequest $request)
 	{
 		$patient->fill($request->all())->save();
 		
@@ -102,6 +132,13 @@ class PatientController extends Controller {
 		$patient->delete();
 		
 		return redirect()->route('patient.index');
+	}
+
+	public function destroy_consultation(Consultation $consultation)
+	{
+		$consultation->delete();
+		
+		return redirect()->back();
 	}
 
 }
