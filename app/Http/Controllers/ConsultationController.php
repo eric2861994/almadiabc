@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Consultation;
+use App\Http\Requests\CreateConsultationRequest;
+use App\Patient;
+use Carbon\Carbon;
 
 class ConsultationController extends Controller {
 
@@ -19,6 +22,8 @@ class ConsultationController extends Controller {
 	{
 		$consultations=$this->consultation
 	           				->leftjoin('patients', 'consultations.id_patient', '=', 'patients.id')
+	           				->orderby('consultations.id','asc')
+	           				->select('consultations.id', 'patients.name', 'consultations.doctor', 'consultations.date', 'consultations.problem', 'consultations.result', 'consultations.recipe','consultations.price')
 	            			->get();
 		$totalprice=0;
 		foreach($consultations as $consultation)
@@ -35,7 +40,8 @@ class ConsultationController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$patients=Patient::all()->lists('name','id');
+		return view('consultation.create',compact('patients'));
 	}
 
 	/**
@@ -43,9 +49,15 @@ class ConsultationController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateConsultationRequest $request)
 	{
-		//
+		$r = $request->all();
+		$t = new Consultation;
+		$t->fill($r);
+		$t->date = Carbon::now();
+		$t->save();		
+
+		return redirect()->route('consultation.index');
 	}
 
 	/**
@@ -65,9 +77,10 @@ class ConsultationController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Consultation $consultation)
 	{
-		//
+		$patients=Patient::all()->lists('name','id');
+		return view('consultation.edit', compact('consultation'), compact('patients'));
 	}
 
 	/**
@@ -76,9 +89,11 @@ class ConsultationController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Consultation $consultation, CreateConsultationRequest $request)
 	{
-		//
+		$consultation->fill($request->all())->save();
+		
+		return redirect()->route('consultation.index');
 	}
 
 	/**
@@ -87,9 +102,11 @@ class ConsultationController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Consultation $consultation)
 	{
-		//
+		$consultation->delete();
+		
+		return redirect()->route('consultation.index');
 	}
 
 }

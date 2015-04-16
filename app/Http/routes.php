@@ -17,6 +17,7 @@ Route::model('produk', 'App\Product');
 Route::model('pembelian', 'App\TransPurchase');
 Route::model('penjualan', 'App\TransSell');
 Route::model('trperawatan', 'App\TransTreatment');
+Route::model('konsultasi', 'App\Consultation');
 
 
 Route::resource('dummy', 'DummyController');
@@ -81,9 +82,19 @@ Route::put('transaksi-perawatan/{trperawatan}', ['as' => 'transtreatment.update'
 Route::get('transaksi-perawatan/{trperawatan}/hapus', ['as' => 'transtreatment.get_destroy', 'uses' => 'TransTreatmentController@destroy']);
 
 
-Route::get('penjualan', 'TransSellController@index');
-Route::get('pembelian', 'TransPurchaseController@index');
-Route::get('konsultasi', 'ConsultationController@index');
+// transaction treatment
+Route::get('konsultasi/tambah', ['as' => 'consultation.create', 'uses' => 'ConsultationController@create']);
+Route::post('konsultasi', ['as' => 'consultation.store', 'uses' => 'ConsultationController@store']);
+Route::get('konsultasi', ['as' => 'consultation.index', 'uses' => 'ConsultationController@index']);
+Route::get('konsultasi/{konsultasi}', ['as' => 'consultation.show', 'uses' => 'ConsultationController@show']);
+Route::get('konsultasi/{konsultasi}/ubah', ['as' => 'consultation.edit', 'uses' => 'ConsultationController@edit']);
+Route::put('konsultasi/{konsultasi}', ['as' => 'consultation.update', 'uses' => 'ConsultationController@update']);
+Route::get('konsultasi/{konsultasi}/hapus', ['as' => 'consultation.get_destroy', 'uses' => 'ConsultationController@destroy']);
+
+
+// Route::get('penjualan', 'TransSellController@index');
+// Route::get('pembelian', 'TransPurchaseController@index');
+// Route::get('konsultasi', 'ConsultationController@index');
 
 
 // Route::get('/', 'WelcomeController@index');

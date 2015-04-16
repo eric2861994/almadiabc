@@ -12,7 +12,7 @@
 
 <div class="form-group {{ $errors->has('quantity') ? 'has-error' : '' }}">
 {!! Form::label('quantity', 'Kuantitas:') !!}
-{!! Form::text('quantity', null, ['class' => 'form-control', 'required']) !!}
+{!! Form::text('quantity', null, ['class' => 'form-control']) !!}
 {!! $errors->first('quantity', '<span class="help-block">:message</span>') !!}
 </div>
 
