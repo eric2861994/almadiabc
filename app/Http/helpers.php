@@ -22,6 +22,3 @@ function number_form($name, $default = null, $attributes = null) {
 	
 	return $generated;
 }
-
-
-?>
