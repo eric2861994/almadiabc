@@ -4,7 +4,7 @@
 <h1>Data Konsultasi</h1>
 
 <p>Berikut ini adalah data konsultasi seluruh pasien</p>
-<a href="tambah"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
+<a href="{{ route('consultation.create') }}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah</button></a>
 
 <h3>Pemilihan waktu</h3>
 <form class="form-inline" method="get">
@@ -45,8 +45,8 @@
 	<td>{{ $consultation->recipe }}</td>
 	<td>Rp. {{ $consultation->price }}</td>
 	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
+	<a href="{{ route('consultation.edit', $consultation->id) }}"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
+	<a href="{{ route('consultation.get_destroy', $consultation->id) }}"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
 	@endforeach
