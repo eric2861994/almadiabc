@@ -45,6 +45,11 @@
 	</td>
 	</tr>
 	@endforeach
+	@if(count($patients)==0)
+	<tr>
+	<th colspan="9"><h2><center>Tidak Ada Pasien</center></h2></th>
+	</tr>
+	@endif
 </tbody>
 </table>
 @endsection

@@ -29,6 +29,11 @@
 	</td>
 	</tr>
 	@endforeach
+	@if(count($treatments)==0)
+	<tr>
+	<th colspan="7"><h2><center>Tidak Ada Perawatan</center></h2></th>
+	</tr>
+	@endif
 </tbody>
 </table>
 @endsection

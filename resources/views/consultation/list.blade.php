@@ -50,7 +50,13 @@
 	</td>
 	</tr>
 	@endforeach
+	@if(count($consultations)>0)
 	<tr><td></td><td></td><td></td><td></td><td></td><td></td><th>Total Transaksi</th><td>Rp {{$totalprice}}</td><td></td></tr>
+	@else
+	<tr>
+	<th colspan="9"><h2><center>Tidak Ada Transaksi</center></h2></th>
+	</tr>
+	@endif
 </tbody>
 </table>
 @endsection
