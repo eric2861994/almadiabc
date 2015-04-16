@@ -41,30 +41,20 @@
 	</tr>
 </thead>
 <tbody>
+	@foreach($patient_consultations as $consultation)
 	<tr>
-	<td>1</td>
-	<td>2 April 2015</td>
-	<td>Paul Diesel</td>
-	<td>Jerawat</td>
-	<td>Obat anti-jerawat krim</td>
-	<td>Rp 50.000,00</td>
+	<td>{{ $consultation->id }}</td>
+	<td>{{ $consultation->date}}</td>
+	<td>{{ $consultation->doctor }}</td>
+	<td>{{ $consultation->problem }}</td>
+	<td>{{ $consultation->recipe }}</td>
+	<td>{{ $consultation->price }}</td>
 	<td>
 	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
 	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
 	</td>
 	</tr>
-	<tr>
-	<td>2</td>
-	<td>3 April 2015</td>
-	<td>Paul Diesel Jr.</td>
-	<td>Kulit Kering</td>
-	<td>Pelembab muka</td>
-	<td>Rp 40.000,00</td>
-	<td>
-	<a href="#"><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button></a>
-	<a href="#"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus</button></a>
-	</td>
-	</tr>
+	@endforeach
 </tbody>
 </table>
 @endsection

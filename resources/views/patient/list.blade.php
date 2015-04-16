@@ -6,7 +6,7 @@
 <p>Berikut ini adalah daftar pasien yang terdaftar di sistem.</p>
 
 <h3>Mencari Pasien</h3>
-<form>
+<form method="post" action="patient/search">
 <div class="form-group">
 <label for="query">Nama Pasien</label>
 <input type="text" class="form-control" id="query" />

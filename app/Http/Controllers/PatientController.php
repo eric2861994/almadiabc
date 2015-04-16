@@ -53,7 +53,13 @@ class PatientController extends Controller {
 	 */
 	public function show(Patient $patient)
 	{
-		return view('patient.show', compact('patient'));
+		$id_patient = $patient->id;
+		$patient_consultations = $this->patient
+								      ->where('patients.id', '=', $id_patient)
+									  ->join('consultations', 'consultations.id_patient', '=', 'patients.id')
+						 	  		  ->get();
+
+		return view('patient.show', compact('patient'), compact('patient_consultations'));
 	}
 
 	/**

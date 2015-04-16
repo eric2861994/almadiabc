@@ -12,7 +12,7 @@
 
 <div class="form-group {{ $errors->has('birthday') ? 'has-error' : '' }}">
 {!! Form::label('birthday', 'Tanggal Lahir:') !!}
-{!! Form::text('birthday', null, ['class' => 'form-control', 'placeholder' => 'dd-mm-yyyy']) !!}
+{!! Form::text('birthday', null, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 {!! $errors->first('birthday', '<span class="help-block">:message</span>') !!}
 </div>
 
