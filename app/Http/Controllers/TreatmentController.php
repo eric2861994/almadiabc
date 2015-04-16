@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Treatment;
+use App\TransTreatment;
 use App\Http\Requests\CreateTreatmentRequest;
 
 class TreatmentController extends Controller {
@@ -88,9 +89,20 @@ class TreatmentController extends Controller {
 	 */
 	public function destroy(Treatment $treatment)
 	{
-		$treatment->delete();
+		$id_treatment = $treatment->id;
 		
-		return redirect()->route('treatment.index');
+		$trans_treatments = TransTreatment::where('id_treatment', $id_treatment)->get();
+		foreach($trans_treatments as $trans_treatment) {
+			$trans_treatment->delete();
+		}
+
+		if(count($trans_treatment)>0) {
+			return redirect()->back()->with('message', 'Perawatan gagal dihapus, terdapat transaksi dengan perawatan terkait');
+		} else {
+			$treatment->delete();
+		
+			return redirect()->route('treatment.index');
+		}
 	}
 
 }

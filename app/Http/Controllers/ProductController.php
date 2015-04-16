@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\CreateProductRequest;
 use App\Product;
+use App\TransSell;
+use App\TransPurchase;
 
 class ProductController extends Controller {
 
@@ -93,9 +95,25 @@ class ProductController extends Controller {
 	 */
 	public function destroy(Product $product)
 	{
-		$product->delete();
+		$id_product = $product->id;
 		
-		return redirect()->route('product.index');
+		$trans_sells = TransSell::where('id_product', $id_product)->get();
+		foreach($trans_sells as $trans_sell) {
+			$trans_sell->delete();
+		}
+
+		$trans_purchases = TransPurchase::where('id_product', $id_product)->get();
+		foreach($trans_purchases as $trans_purchase) {
+			$trans_purchase->delete();
+		}
+
+		if(count($trans_sells)>0 or count($trans_purchases)>0) {
+			return redirect()->back()->with('message', 'Produk gagal dihapus, terdapat transaksi dengan produk terkait');
+		} else {
+			$product->delete();
+		
+			return redirect()->route('product.index');
+		}
 	}
 
 }
