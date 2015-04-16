@@ -88,10 +88,10 @@ Route::get('konsultasi', 'ConsultationController@index');
 
 // Route::get('/', 'WelcomeController@index');
 // Route::get('home', 'HomeController@index');
-// Route::get('login', function()
-	// {
-		// return View::make('auth.login');
-	// });
+Route::get('login', function()
+{
+	return View::make('auth.login');
+});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
